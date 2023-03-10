@@ -16,17 +16,13 @@ jobs:
           ruby-version: '3.1'
 
       - name: Install dependencies
-        if: steps.check.outputs.changed == 'true'
         run: bundle install
 
       - name: Run test cases
-        if: steps.check.outputs.changed == 'true'
         run: rspec
 
       - name: Build production bundle
-        if: steps.check.outputs.changed == 'true'
         run: gem build seismic_universal_auth.gemspec
 
       - name: Publish
-        if: steps.check.outputs.changed == 'true'
         run: find * -name 'tippr_deluxe-*' | gem push
