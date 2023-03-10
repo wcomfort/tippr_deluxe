@@ -22,7 +22,7 @@ jobs:
         run: rspec
 
       - name: Build production bundle
-        run: gem build seismic_universal_auth.gemspec
+        run: gem build tippr_deluxe.gemspec
 
       - name: Publish
         run: find * -name 'tippr_deluxe-*' | gem push
