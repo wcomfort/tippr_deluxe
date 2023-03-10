@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "Require TipprDeluxe class and pass in total and tip amount to calculate tip"
   spec.homepage = "https://github.com/wcomfort/tippr_deluxe"
   spec.required_ruby_version = ">= 2.6.0"
-  spec.files         = Dir.glob("{bin,lib,template}/**/*") + %w(LICENSE.txt README.md)
+
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
