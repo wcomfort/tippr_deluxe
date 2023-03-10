@@ -14,15 +14,6 @@ jobs:
         uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
           ruby-version: '3.1'
-      - name: Check version changes
-        uses: EndBug/version-check@v2
-        id: check
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Version update detected
-        if: steps.check.outputs.changed == 'true'
-        run: 'echo "Version change found! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
 
       - name: Install dependencies
         if: steps.check.outputs.changed == 'true'
