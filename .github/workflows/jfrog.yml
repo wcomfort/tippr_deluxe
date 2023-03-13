@@ -20,8 +20,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
         id: check
-        with:
-          token: ${{ secrets.GEM_HOST_API_KEY }}
 
       - name: Version update detected
         if: steps.check.outputs.changed == 'true'
