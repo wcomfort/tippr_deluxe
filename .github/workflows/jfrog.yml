@@ -16,7 +16,12 @@ jobs:
           ruby-version: '3.1'
 
       - name: Check version changes
-        uses: .github/workflows/version-forget-me-not@2.1
+      - uses: simplybusiness/version-forget-me-not@v2.1.0
+        env:
+          ACCESS_TOKEN: ${{ secrets.GEM_HOST_API_KEY }}
+          # Change to the file path where you keep the Gem's version.
+          # It is usually `lib/<gem name>/version.rb` or in the gemspec file.
+          VERSION_FILE_PATH: "lib/tippr_deluxe/version.rb"
         id: check
         with:
           token: ${{ secrets.GEM_HOST_API_KEY }}
