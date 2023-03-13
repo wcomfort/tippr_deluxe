@@ -19,6 +19,7 @@ module TipprDeluxe
     end
     total = bill * multiplier
     puts total
+    puts "ello mate"
     total
   end
 end
