@@ -15,16 +15,30 @@ jobs:
         with:
           ruby-version: '3.1'
 
+      - name: Check version changes
+        uses: ./.github/workflows/version-forget-me-not
+        id: check
+        with:
+          token: ${{ secrets.GEM_HOST_API_KEY }}
+
+      - name: Version update detected
+        if: steps.check.outputs.changed == 'true'
+        run: 'echo "Version change found! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+
       - name: Install dependencies
+        if: steps.check.outputs.changed == 'true'
         run: bundle install
 
       - name: Run test cases
+        if: steps.check.outputs.changed == 'true'
         run: rspec
 
       - name: Build production bundle
+        if: steps.check.outputs.changed == 'true'
         run: gem build tippr_deluxe.gemspec
 
       - name: Publish
+        if: steps.check.outputs.changed == 'true'
         run: |
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
